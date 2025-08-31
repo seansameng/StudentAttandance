@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <!-- Class Menu Button -->
+    <item
+        android:id="@+id/action_class_menu"
+        android:title="Class Menu"
+        android:icon="@drawable/ic_room"
+        app:showAsAction="ifRoom" />
+        
+    <!-- Admin/Teacher Only: Add New Class -->
+    <item
+        android:id="@+id/action_add_class"
+        android:title="Add New Class"
+        android:icon="@drawable/ic_add"
+        app:showAsAction="never" />
+        
+    <!-- Admin/Teacher Only: Import Classes -->
+    <item
+        android:id="@+id/action_import_classes"
+        android:title="Import Classes"
+        android:icon="@drawable/ic_download"
+        app:showAsAction="never" />
+        
+    <!-- Admin/Teacher Only: Export Classes -->
+    <item
+        android:id="@+id/action_export_classes"
+        android:title="Export Classes"
+        android:icon="@drawable/ic_download"
+        app:showAsAction="never" />
+        
+    <!-- All Roles: View Class Details -->
+    <item
+        android:id="@+id/action_view_details"
+        android:title="View Class Details"
+        android:icon="@drawable/ic_info"
+        app:showAsAction="never" />
+        
+    <!-- All Roles: Search Classes -->
+    <item
+        android:id="@+id/action_search_classes"
+        android:title="Search Classes"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="never" />
+        
+    <!-- All Roles: Filter Classes -->
+    <item
+        android:id="@+id/action_filter_classes"
+        android:title="Filter Classes"
+        android:icon="@drawable/ic_filter"
+        app:showAsAction="never" />
+        
+    <!-- Admin/Teacher Only: Class Reports -->
+    <item
+        android:id="@+id/action_class_reports"
+        android:title="Class Reports"
+        android:icon="@drawable/ic_chart"
+        app:showAsAction="never" />
+        
+</menu>

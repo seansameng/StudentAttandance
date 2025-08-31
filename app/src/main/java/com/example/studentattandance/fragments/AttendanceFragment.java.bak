@@ -1,0 +1,97 @@
+package com.example.studentattandance.fragments;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.studentattandance.R;
+import com.example.studentattandance.adapters.AttendanceAdapter;
+import com.example.studentattandance.models.Attendance;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AttendanceFragment extends Fragment {
+
+    private RecyclerView attendanceRecyclerView;
+    private TextView emptyStateText;
+    private FloatingActionButton addAttendanceFab;
+    
+    private AttendanceAdapter attendanceAdapter;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_attendance, container, false);
+        
+        initViews(view);
+        setupRecyclerView();
+        loadAttendanceData();
+        
+        return view;
+    }
+
+    private void initViews(View view) {
+        attendanceRecyclerView = view.findViewById(R.id.attendance_recycler);
+        emptyStateText = view.findViewById(R.id.empty_state_text);
+        addAttendanceFab = view.findViewById(R.id.add_attendance_fab);
+        
+        addAttendanceFab.setOnClickListener(v -> {
+            // TODO: Show add attendance dialog
+            showAddAttendanceDialog();
+        });
+    }
+
+    private void setupRecyclerView() {
+        attendanceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        attendanceAdapter = new AttendanceAdapter(requireContext(), new ArrayList<>());
+        attendanceRecyclerView.setAdapter(attendanceAdapter);
+    }
+
+    private void loadAttendanceData() {
+        // Load mock data for demonstration
+        loadMockAttendanceData();
+        
+        // TODO: Load real data from API when backend is ready
+    }
+
+    private void loadMockAttendanceData() {
+        List<Attendance> attendanceList = new ArrayList<>();
+        
+        // Mock attendance records
+        attendanceList.add(new Attendance("1", "S001", "C001", "John Doe", "Mathematics 101", "2024-01-15", Attendance.AttendanceStatus.PRESENT, "09:00", null, "T001", ""));
+        attendanceList.add(new Attendance("2", "S002", "C001", "Jane Smith", "Mathematics 101", "2024-01-15", Attendance.AttendanceStatus.LATE, "09:15", null, "T001", ""));
+        attendanceList.add(new Attendance("3", "S003", "C001", "Mike Johnson", "Mathematics 101", "2024-01-15", Attendance.AttendanceStatus.ABSENT, null, null, "T001", ""));
+        
+        if (attendanceList.isEmpty()) {
+            showEmptyState();
+        } else {
+            hideEmptyState();
+            attendanceAdapter.updateData(attendanceList);
+        }
+    }
+
+    private void showEmptyState() {
+        emptyStateText.setVisibility(View.VISIBLE);
+        attendanceRecyclerView.setVisibility(View.GONE);
+    }
+
+    private void hideEmptyState() {
+        emptyStateText.setVisibility(View.GONE);
+        attendanceRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    private void showAddAttendanceDialog() {
+        // TODO: Implement add attendance dialog
+        // This will be implemented when we create the dialog
+    }
+}

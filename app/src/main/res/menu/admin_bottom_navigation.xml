@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Dashboard Overview -->
+    <item
+        android:id="@+id/nav_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard" />
+        
+    <!-- User Management -->
+    <item
+        android:id="@+id/nav_users"
+        android:title="Users"
+        android:icon="@drawable/ic_person" />
+        
+    <!-- Class Management -->
+    <item
+        android:id="@+id/nav_classes"
+        android:title="Classes"
+        android:icon="@drawable/ic_room" />
+        
+
+        
+</menu>

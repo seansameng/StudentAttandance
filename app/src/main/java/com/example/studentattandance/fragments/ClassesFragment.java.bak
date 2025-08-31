@@ -1,0 +1,121 @@
+package com.example.studentattandance.fragments;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.studentattandance.R;
+import com.example.studentattandance.adapters.ClassAdapter;
+import com.example.studentattandance.models.Class;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ClassesFragment extends Fragment {
+    
+    private RecyclerView classesRecyclerView;
+    private TextView emptyStateText;
+    private FloatingActionButton addClassFab;
+    
+    private ClassAdapter classAdapter;
+    
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_classes, container, false);
+        
+        initViews(view);
+        setupRecyclerView();
+        loadClassesData();
+        
+        return view;
+    }
+    
+    private void initViews(View view) {
+        classesRecyclerView = view.findViewById(R.id.classes_recycler);
+        emptyStateText = view.findViewById(R.id.empty_state_text);
+        addClassFab = view.findViewById(R.id.add_class_fab);
+        
+        addClassFab.setOnClickListener(v -> {
+            // TODO: Show add class dialog
+            showAddClassDialog();
+        });
+    }
+    
+    private void setupRecyclerView() {
+        classesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        classAdapter = new ClassAdapter(requireContext(), new ArrayList<>());
+        classesRecyclerView.setAdapter(classAdapter);
+        
+        // Set click listener
+        classAdapter.setOnClassClickListener(new ClassAdapter.OnClassClickListener() {
+            @Override
+            public void onClassClick(Class classObj) {
+                // TODO: Show class details
+                showClassDetails(classObj);
+            }
+
+            @Override
+            public void onClassLongClick(Class classObj) {
+                // TODO: Show class options menu
+                showClassOptions(classObj);
+            }
+        });
+    }
+    
+    private void loadClassesData() {
+        // Load mock data for demonstration
+        loadMockClassesData();
+        
+        // TODO: Load real data from API when backend is ready
+    }
+
+    private void loadMockClassesData() {
+        List<Class> classesList = new ArrayList<>();
+        
+        // Mock classes
+        classesList.add(new Class("1", "Mathematics 101", "Advanced Calculus", "T001", "Dr. Smith", "Mon 9:00 AM", "Room 101", "Fall 2024", "2024-2025", 30, null, "Advanced mathematics course", true, "2024-01-15"));
+        classesList.add(new Class("2", "Physics 201", "Quantum Mechanics", "T002", "Dr. Johnson", "Tue 10:30 AM", "Room 202", "Fall 2024", "2024-2025", 25, null, "Physics fundamentals", true, "2024-01-15"));
+        classesList.add(new Class("3", "Computer Science 101", "Introduction to Programming", "T003", "Dr. Williams", "Wed 2:00 PM", "Room 303", "Fall 2024", "2024-2025", 35, null, "Programming basics", true, "2024-01-15"));
+        
+        if (classesList.isEmpty()) {
+            showEmptyState();
+        } else {
+            hideEmptyState();
+            classAdapter.updateData(classesList);
+        }
+    }
+
+    private void showEmptyState() {
+        emptyStateText.setVisibility(View.VISIBLE);
+        classesRecyclerView.setVisibility(View.GONE);
+    }
+
+    private void hideEmptyState() {
+        emptyStateText.setVisibility(View.GONE);
+        classesRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    private void showAddClassDialog() {
+        // TODO: Implement add class dialog
+        // This will be implemented when we create the dialog
+    }
+
+    private void showClassDetails(Class classObj) {
+        // TODO: Implement class details view
+        // This will be implemented when we create the details activity/fragment
+    }
+
+    private void showClassOptions(Class classObj) {
+        // TODO: Implement class options menu
+        // This will be implemented when we create the options menu
+    }
+}

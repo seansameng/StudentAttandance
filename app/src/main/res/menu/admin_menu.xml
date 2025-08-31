@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <item
+        android:id="@+id/action_admin_dashboard"
+        android:title="Main Dashboard"
+        android:icon="@drawable/ic_dashboard"
+        app:showAsAction="ifRoom" />
+        
+    <item
+        android:id="@+id/action_class_management"
+        android:title="Class Management"
+        android:icon="@drawable/ic_room"
+        app:showAsAction="ifRoom" />
+        
+    <item
+        android:id="@+id/action_user_management"
+        android:title="User Management"
+        android:icon="@drawable/ic_person"
+        app:showAsAction="ifRoom" />
+        
+</menu>

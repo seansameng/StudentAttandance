@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:id="@+id/action_quick_class_management"
+        android:title="Class Management"
+        android:icon="@drawable/ic_room" />
+        
+    <item
+        android:id="@+id/action_quick_user_management"
+        android:title="User Management"
+        android:icon="@drawable/ic_person" />
+        
+    <item
+        android:id="@+id/action_quick_admin_dashboard"
+        android:title="Main Dashboard"
+        android:icon="@drawable/ic_dashboard" />
+        
+</menu>

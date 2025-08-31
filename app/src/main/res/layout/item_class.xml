@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Class Name and Subject -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tv_class_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Class Name"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#2c3e50" />
+
+            <TextView
+                android:id="@+id/tv_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subject"
+                android:textSize="14sp"
+                android:textColor="#7f8c8d"
+                android:background="@drawable/subject_badge"
+                android:padding="8dp"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- Schedule and Room -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_schedule"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Schedule: TBD"
+                android:textSize="14sp"
+                android:textColor="#34495e"
+                android:drawableStart="@android:drawable/ic_menu_recent_history"
+                android:drawablePadding="8dp" />
+
+            <TextView
+                android:id="@+id/tv_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Room: TBD"
+                android:textSize="14sp"
+                android:textColor="#34495e"
+                android:drawableStart="@android:drawable/ic_menu_compass"
+                android:drawablePadding="8dp" />
+
+        </LinearLayout>
+
+        <!-- Teacher -->
+        <TextView
+            android:id="@+id/tv_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teacher: TBD"
+            android:textSize="14sp"
+            android:textColor="#7f8c8d"
+            android:drawableStart="@android:drawable/ic_menu_myplaces"
+            android:drawablePadding="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Enrolled Count (for teachers/admins) -->
+        <TextView
+            android:id="@+id/tv_enrolled_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enrolled: 0/25"
+            android:textSize="12sp"
+            android:textColor="#27ae60"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:background="@drawable/enrolled_count_badge"
+            android:padding="6dp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

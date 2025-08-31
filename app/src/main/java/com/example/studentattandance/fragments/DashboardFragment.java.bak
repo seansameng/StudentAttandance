@@ -1,0 +1,171 @@
+package com.example.studentattandance.fragments;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.studentattandance.R;
+import com.example.studentattandance.adapters.ClassAdapter;
+import com.example.studentattandance.models.Class;
+import com.example.studentattandance.models.User;
+import com.example.studentattandance.api.ApiClient;
+import com.example.studentattandance.api.ApiService;
+import com.example.studentattandance.utils.SessionManager;
+import com.example.studentattandance.utils.SpringBootResponseHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class DashboardFragment extends Fragment {
+    
+    private TextView welcomeText;
+    private TextView totalClassesText;
+    private TextView presentTodayText;
+    private TextView absentTodayText;
+    private TextView attendancePercentageText;
+    private RecyclerView upcomingClassesRecyclerView;
+    
+    private ClassAdapter classAdapter;
+    private ApiService apiService;
+    private SessionManager sessionManager;
+    
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        
+        initViews(view);
+        setupRecyclerView();
+        loadDashboardData();
+        
+        return view;
+    }
+    
+    private void initViews(View view) {
+        welcomeText = view.findViewById(R.id.tv_welcome);
+        totalClassesText = view.findViewById(R.id.tv_total_classes);
+        presentTodayText = view.findViewById(R.id.tv_today_attendance);
+        absentTodayText = view.findViewById(R.id.tv_average_attendance);
+        attendancePercentageText = view.findViewById(R.id.tv_total_students);
+        upcomingClassesRecyclerView = view.findViewById(R.id.upcoming_classes_recycler);
+        
+        // Initialize API service and session manager
+        apiService = ApiClient.getInstance(requireContext()).getApiService();
+        sessionManager = SessionManager.getInstance(requireContext());
+    }
+    
+    private void setupRecyclerView() {
+        upcomingClassesRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        classAdapter = new ClassAdapter(requireContext(), new ArrayList<>());
+        upcomingClassesRecyclerView.setAdapter(classAdapter);
+    }
+    
+    private void loadDashboardData() {
+        // Set welcome message with actual user name
+        User currentUser = sessionManager.getUser();
+        if (currentUser != null) {
+            welcomeText.setText(getString(R.string.welcome) + ", " + currentUser.getFirstName());
+        } else {
+            welcomeText.setText(getString(R.string.welcome));
+        }
+        
+        // Load real data from API
+        loadDashboardOverview();
+        loadUpcomingClasses();
+    }
+
+    private void loadDashboardOverview() {
+        // Get authorization token
+        String token = sessionManager.getAccessToken();
+        if (token == null) {
+            showErrorAndLoadMockData("No authorization token available");
+            return;
+        }
+        
+        Call<ApiService.DashboardData> call = apiService.getDashboardOverview("Bearer " + token);
+        call.enqueue(new Callback<ApiService.DashboardData>() {
+            @Override
+            public void onResponse(Call<ApiService.DashboardData> call, Response<ApiService.DashboardData> response) {
+                if (SpringBootResponseHandler.handleResponse(requireContext(), response, "Loading dashboard")) {
+                    ApiService.DashboardData dashboardData = response.body();
+                    if (dashboardData != null) {
+                        totalClassesText.setText(String.valueOf(dashboardData.totalClasses));
+                        presentTodayText.setText(String.valueOf(dashboardData.todayAttendance));
+                        absentTodayText.setText(String.valueOf(dashboardData.averageAttendance));
+                        attendancePercentageText.setText(String.valueOf(dashboardData.totalStudents));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiService.DashboardData> call, Throwable t) {
+                // Show error and fallback to mock data
+                showErrorAndLoadMockData("Failed to load dashboard data: " + t.getMessage());
+            }
+        });
+    }
+
+    private void loadUpcomingClasses() {
+        // Get authorization token
+        String token = sessionManager.getAccessToken();
+        if (token == null) {
+            showErrorAndLoadMockData("No authorization token available");
+            return;
+        }
+        Call<List<Class>> call = apiService.getUpcomingClasses("Bearer " + token);
+        call.enqueue(new Callback<List<Class>>() {
+            @Override
+            public void onResponse(Call<List<Class>> call, Response<List<Class>> response) {
+                if (SpringBootResponseHandler.handleResponse(requireContext(), response, "Loading upcoming classes")) {
+                    List<Class> upcomingClasses = response.body();
+                    if (upcomingClasses != null) {
+                        classAdapter.updateData(upcomingClasses);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Class>> call, Throwable t) {
+                // Show error and fallback to mock data
+                showErrorAndLoadMockData("Failed to load upcoming classes: " + t.getMessage());
+            }
+        });
+    }
+
+    private void showErrorAndLoadMockData(String errorMessage) {
+        // Show error message
+        if (getContext() != null) {
+            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_LONG).show();
+        }
+        
+        // Fallback to mock data for demonstration
+        loadMockData();
+    }
+
+    private void loadMockData() {
+        // Mock attendance summary
+        totalClassesText.setText("5");
+        presentTodayText.setText("4");
+        absentTodayText.setText("1");
+        attendancePercentageText.setText("80%");
+
+        // Mock upcoming classes
+        List<Class> upcomingClasses = new ArrayList<>();
+        upcomingClasses.add(new Class("1", "Mathematics 101", "Advanced Calculus", "T001", "Dr. Smith", "Mon 9:00 AM", "Room 101", "Fall 2024", "2024-2025", 30, null, "Advanced mathematics course", true, "2024-01-15"));
+        upcomingClasses.add(new Class("2", "Physics 201", "Quantum Mechanics", "T002", "Dr. Johnson", "Tue 10:30 AM", "Room 202", "Fall 2024", "2024-2025", 25, null, "Physics fundamentals", true, "2024-01-15"));
+        
+        classAdapter.updateData(upcomingClasses);
+    }
+}

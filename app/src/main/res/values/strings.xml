@@ -1,0 +1,200 @@
+<resources>
+    <string name="app_name">Student Attendance</string>
+
+    <!-- Welcome Screen -->
+    <string name="app_logo">App Logo</string>
+    <string name="welcome_title">Student Attendance</string>
+    <string name="welcome_subtitle">Track attendance, manage classes, and generate reports with ease</string>
+    <string name="login_title">Sign In</string>
+    <string name="login_subtitle">Access your account to continue</string>
+    <string name="register_title">Create Account</string>
+    <string name="register_subtitle">Join us to get started</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <!-- Login Screen -->
+    <string name="back_button">Back</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_to_continue">Sign in to continue to your account</string>
+    <string name="username">Username</string>
+    <string name="enter_username">Enter your username</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter your password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="help">Help</string>
+    <string name="back_to_welcome">Back to Welcome</string>
+
+    <!-- Dashboard -->
+    <string name="welcome_message">Welcome back!</string>
+    <string name="welcome">Welcome</string>
+    <string name="total_classes">Total Classes</string>
+    <string name="total_students">Total Students</string>
+    <string name="today_attendance">Today\'s Attendance</string>
+    <string name="average_attendance">Average Attendance</string>
+    <string name="upcoming_classes">Upcoming Classes</string>
+    <string name="classes_icon">Classes Icon</string>
+    <string name="students_icon">Students Icon</string>
+    <string name="attendance_icon">Attendance Icon</string>
+    <string name="chart_icon">Chart Icon</string>
+
+    <!-- Navigation -->
+    <string name="dashboard">Dashboard</string>
+    <string name="attendance">Attendance</string>
+    <string name="classes">Classes</string>
+    <string name="admin">Admin</string>
+
+
+    <!-- Common -->
+    <string name="loading">Loading…</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="add">Add</string>
+    <string name="search">Search</string>
+    <string name="filter">Filter</string>
+    <string name="refresh">Refresh</string>
+
+    <!-- Attendance -->
+    <string name="mark_attendance">Mark Attendance</string>
+    <string name="attendance_date">Attendance Date</string>
+    <string name="class_name">Class Name</string>
+    <string name="student_name">Student Name</string>
+    <string name="status">Status</string>
+    <string name="present">Present</string>
+    <string name="absent">Absent</string>
+    <string name="late">Late</string>
+    <string name="excused">Excused</string>
+    <string name="half_day">Half Day</string>
+    <string name="notes">Notes</string>
+    <string name="time_in">Time In</string>
+    <string name="time_out">Time Out</string>
+
+    <!-- Classes -->
+    <string name="class_details">Class Details</string>
+    <string name="subject">Subject</string>
+    <string name="teacher">Teacher</string>
+    <string name="schedule">Schedule</string>
+    <string name="room">Room</string>
+    <string name="semester">Semester</string>
+    <string name="academic_year">Academic Year</string>
+    <string name="enrolled_students">Enrolled Students</string>
+    <string name="max_students">Max Students</string>
+    <string name="description">Description</string>
+
+    <!-- Reports -->
+    <string name="reports">Reports</string>
+    <string name="attendance_report">Attendance Report</string>
+    <string name="student_report">Student Report</string>
+    <string name="class_report">Class Report</string>
+    <string name="generate_report">Generate Report</string>
+    <string name="export_report">Export Report</string>
+    <string name="report_period">Report Period</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="my_reports">My Reports</string>
+    <string name="attendance_reports">Attendance Reports</string>
+
+    <!-- Profile -->
+    <string name="personal_info">Personal Information</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="student_id">Student ID</string>
+    <string name="department">Department</string>
+    <string name="role">Role</string>
+    <string name="change_password">Change Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="logout">Logout</string>
+
+    <!-- Messages -->
+    <string name="login_successful">Login successful!</string>
+    <string name="login_failed">Login failed. Please check your credentials.</string>
+    <string name="network_error">Network error. Please check your connection.</string>
+    <string name="server_error">Server error. Please try again later.</string>
+    <string name="invalid_input">Please check your input and try again.</string>
+    <string name="operation_successful">Operation completed successfully.</string>
+    <string name="operation_failed">Operation failed. Please try again.</string>
+
+    <!-- Empty States -->
+    <string name="no_classes_found">No classes found</string>
+    <string name="no_students_found">No students found</string>
+    <string name="no_attendance_found">No attendance records found</string>
+    <string name="no_reports_found">No reports found</string>
+
+    <!-- Additional strings for layouts -->
+    <string name="enter_email">Enter your email</string>
+    <string name="enter_first_name">Enter your first name</string>
+    <string name="enter_last_name">Enter your last name</string>
+    <string name="confirm_password_hint">Confirm your password</string>
+    <string name="settings">Settings</string>
+    <string name="notifications">Notifications</string>
+    <string name="notifications_description">Receive notifications for attendance updates</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="dark_mode_description">Switch between light and dark themes</string>
+    <string name="auto_sync">Auto Sync</string>
+    <string name="auto_sync_description">Automatically sync data in the background</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="app_information">App Information</string>
+    <string name="app_preferences">App Preferences</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="create_account">Create Account</string>
+    <string name="register_to_continue">Register to continue</string>
+
+    <!-- Content descriptions -->
+    <string name="login_icon">Login Icon</string>
+    <string name="register_icon">Register Icon</string>
+    <string name="teacher_icon">Teacher Icon</string>
+    <string name="room_icon">Room Icon</string>
+    <string name="report_icon">Report Icon</string>
+
+    
+    <!-- Additional missing strings -->
+    <string name="enrolled_count">Enrolled Count</string>
+    <string name="select_class">Select Class</string>
+    <string name="load_students">Load Students</string>
+    <string name="save_attendance">Save Attendance</string>
+    <string name="student_attendance">Student Attendance</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="tap_to_change">Tap to change</string>
+    <string name="generated_reports">Generated Reports</string>
+    <string name="attendance_management">Attendance Management</string>
+    <string name="no_attendance_records">No attendance records found</string>
+    <string name="class_management">Class Management</string>
+    <string name="full_name">Full Name</string>
+    <string name="last_login">Last Login</string>
+    <string name="no_reports_available">No reports available</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="report_title">Report Title</string>
+    <string name="report_type">Report Type</string>
+    <string name="report_date">Report Date</string>
+    <string name="report_summary">Report Summary</string>
+    
+    <!-- User Management -->
+    <string name="user_management">User Management</string>
+    <string name="manage_all_users">Manage all users in the system</string>
+    <string name="no_users_found">No users found</string>
+    <string name="users_will_appear">Users will appear here once added</string>
+    <string name="edit_user">Edit</string>
+    <string name="delete_user">Delete</string>
+    <string name="add_new_user">Add New User</string>
+    <string name="create_user">Create User</string>
+    <string name="access_denied">Access denied. Admin privileges required.</string>
+    <string name="add_new_class">Add New Class</string>
+    <string name="edit_class">Edit Class</string>
+    <string name="save_class">Save Class</string>
+    <string name="add_class">Add Class</string>
+    <string name="my_attendance">My Attendance</string>
+    <string name="my_classes">My Classes</string>
+</resources>
